@@ -1,1 +1,3127 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Personal portfolio of Chaitanya Kumar — CSE Data Science student exploring web development, programming and AI.">
+
+    <title>Chaitanya Kumar | Developer Journey</title>
+
+
+    <!-- =========================================================
+         EVERYTHING IS INSIDE THIS ONE HTML FILE
+         HTML + CSS + JAVASCRIPT
+    ========================================================== -->
+
+
+    <style>
+
+        /* =========================================================
+           COLOR SYSTEM
+        ========================================================== */
+
+        :root {
+
+            --bg: #0B0D0E;
+            --bg-soft: #101314;
+
+            --surface: #17191A;
+            --surface-light: #1E211F;
+
+            --ivory: #F4EFE6;
+            --text: #D8D1C5;
+            --muted: #9D968B;
+
+            --champagne: #C9A96E;
+            --champagne-light: #E0CFA5;
+
+            --bronze: #806B4A;
+
+            --border: rgba(201, 169, 110, 0.18);
+
+            --max-width: 1180px;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                "Inter",
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background: var(--bg);
+
+            color: var(--text);
+
+            line-height: 1.7;
+
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        ul {
+            list-style: none;
+        }
+
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =========================================================
+           CUSTOM SCROLLBAR
+        ========================================================== */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bronze);
+            border-radius: 20px;
+        }
+
+
+        /* =========================================================
+           SELECTION
+        ========================================================== */
+
+        ::selection {
+            background: var(--champagne);
+            color: var(--bg);
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================== */
+
+        .navbar {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            padding: 20px 6%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            background:
+                rgba(11, 13, 14, 0.78);
+
+            backdrop-filter: blur(18px);
+
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid
+                rgba(201, 169, 110, 0.10);
+
+            transition: 0.3s ease;
+        }
+
+
+        .navbar.scrolled {
+
+            background:
+                rgba(11, 13, 14, 0.95);
+
+            border-bottom-color:
+                var(--border);
+        }
+
+
+        .logo {
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            letter-spacing: -1px;
+
+            color: var(--ivory);
+        }
+
+
+        .logo span {
+            color: var(--champagne);
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 32px;
+        }
+
+
+        .nav-links a {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            transition: 0.3s ease;
+
+            position: relative;
+        }
+
+
+        .nav-links a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 1px;
+
+            background: var(--champagne);
+
+            transition: 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+
+            color: var(--ivory);
+        }
+
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+        }
+
+
+        .menu-btn {
+
+            display: none;
+
+            background: none;
+
+            border: none;
+
+            color: var(--ivory);
+
+            font-size: 25px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+
+            padding:
+                150px 6%
+                100px;
+
+            overflow: hidden;
+        }
+
+
+        /* Background glow */
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+
+            height: 600px;
+
+            top: -250px;
+
+            right: -200px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(201, 169, 110, 0.12),
+                    transparent 65%
+                );
+
+            pointer-events: none;
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 500px;
+
+            bottom: -300px;
+
+            left: -200px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(128, 107, 74, 0.12),
+                    transparent 65%
+                );
+
+            pointer-events: none;
+        }
+
+
+        .hero-container {
+
+            max-width: var(--max-width);
+
+            width: 100%;
+
+            margin: auto;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .hero-label {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: var(--champagne);
+
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .hero-label::before {
+
+            content: "";
+
+            width: 35px;
+
+            height: 1px;
+
+            background: var(--champagne);
+        }
+
+
+        .hero h1 {
+
+            max-width: 950px;
+
+            font-size:
+                clamp(52px, 8vw, 100px);
+
+            line-height: 0.98;
+
+            letter-spacing: -5px;
+
+            font-weight: 700;
+
+            color: var(--ivory);
+
+            margin-bottom: 30px;
+        }
+
+
+        .hero h1 span {
+
+            color: var(--champagne);
+        }
+
+
+        .hero-description {
+
+            max-width: 650px;
+
+            font-size: 18px;
+
+            color: var(--muted);
+
+            line-height: 1.8;
+
+            margin-bottom: 38px;
+        }
+
+
+        .hero-buttons {
+
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                13px 25px;
+
+            border-radius: 4px;
+
+            font-size: 14px;
+
+            transition: 0.3s ease;
+
+            cursor: pointer;
+        }
+
+
+        .btn-primary {
+
+            background: var(--champagne);
+
+            color: var(--bg);
+
+            border: 1px solid var(--champagne);
+        }
+
+
+        .btn-primary:hover {
+
+            background: var(--champagne-light);
+
+            border-color: var(--champagne-light);
+
+            transform: translateY(-3px);
+        }
+
+
+        .btn-secondary {
+
+            color: var(--ivory);
+
+            border:
+                1px solid
+                rgba(244, 239, 230, 0.20);
+        }
+
+
+        .btn-secondary:hover {
+
+            border-color: var(--champagne);
+
+            color: var(--champagne);
+
+            transform: translateY(-3px);
+        }
+
+
+        /* Scroll indicator */
+
+        .scroll-indicator {
+
+            position: absolute;
+
+            bottom: 35px;
+
+            left: 6%;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            color: #777;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .scroll-line {
+
+            width: 40px;
+
+            height: 1px;
+
+            background: #555;
+        }
+
+
+        /* =========================================================
+           GENERAL SECTION
+        ========================================================== */
+
+        section {
+
+            padding:
+                110px 6%;
+        }
+
+
+        .section-container {
+
+            max-width: var(--max-width);
+
+            margin: auto;
+        }
+
+
+        .section-heading {
+
+            margin-bottom: 60px;
+        }
+
+
+        .section-number {
+
+            color: var(--champagne);
+
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-heading h2 {
+
+            font-size:
+                clamp(35px, 5vw, 55px);
+
+            letter-spacing: -2px;
+
+            line-height: 1.1;
+
+            color: var(--ivory);
+        }
+
+
+        .section-heading p {
+
+            max-width: 600px;
+
+            margin-top: 15px;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================== */
+
+        .about {
+
+            background: var(--bg-soft);
+
+            border-top:
+                1px solid rgba(255,255,255,0.025);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.025);
+        }
+
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.2fr 0.8fr;
+
+            gap: 80px;
+
+            align-items: start;
+        }
+
+
+        .about-text p {
+
+            color: var(--text);
+
+            font-size: 17px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .about-text strong {
+
+            color: var(--champagne);
+
+            font-weight: 500;
+        }
+
+
+        .profile-card {
+
+            background: var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            padding: 30px;
+
+            position: relative;
+        }
+
+
+        .profile-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 35px;
+            height: 2px;
+
+            background: var(--champagne);
+        }
+
+
+        .profile-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 16px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.06);
+        }
+
+
+        .profile-row:last-child {
+            border-bottom: none;
+        }
+
+
+        .profile-row .label {
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        .profile-row .value {
+
+            color: var(--ivory);
+
+            font-size: 14px;
+
+            text-align: right;
+        }
+
+
+        /* =========================================================
+           SKILLS
+        ========================================================== */
+
+        .skills-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .skill-card {
+
+            padding: 28px;
+
+            background: var(--surface);
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            transition: 0.35s ease;
+
+            position: relative;
+        }
+
+
+        .skill-card:hover {
+
+            transform: translateY(-5px);
+
+            border-color: var(--border);
+
+            background: var(--surface-light);
+        }
+
+
+        .skill-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+
+        .skill-name {
+
+            font-size: 17px;
+
+            color: var(--ivory);
+
+            font-weight: 500;
+        }
+
+
+        .skill-status {
+
+            color: var(--champagne);
+
+            font-size: 12px;
+        }
+
+
+        .skill-description {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .skill-bar {
+
+            height: 3px;
+
+            background: #292C2C;
+
+            overflow: hidden;
+        }
+
+
+        .skill-progress {
+
+            height: 100%;
+
+            width: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--bronze),
+                    var(--champagne)
+                );
+
+            transition:
+                width 1.5s ease;
+        }
+
+
+        /* =========================================================
+           LEARNING PATH
+        ========================================================== */
+
+        .learning {
+
+            background: var(--bg-soft);
+        }
+
+
+        .learning-list {
+
+            max-width: 950px;
+
+            margin: auto;
+        }
+
+
+        .learning-item {
+
+            display: grid;
+
+            grid-template-columns: 80px 1fr;
+
+            gap: 30px;
+
+            padding:
+                30px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            transition: 0.3s ease;
+        }
+
+
+        .learning-item:first-child {
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.07);
+        }
+
+
+        .learning-number {
+
+            color: var(--champagne);
+
+            font-size: 13px;
+
+            padding-top: 5px;
+        }
+
+
+        .learning-content h3 {
+
+            color: var(--ivory);
+
+            font-size: 21px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .learning-content p {
+
+            color: var(--muted);
+
+            max-width: 700px;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================== */
+
+        .projects-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .project-card {
+
+            background: var(--surface);
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            padding: 30px;
+
+            min-height: 350px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            transition: 0.35s ease;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .project-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 150px;
+
+            height: 150px;
+
+            right: -80px;
+
+            bottom: -80px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(201,169,110,0.12),
+                    transparent 70%
+                );
+
+            transition: 0.4s ease;
+        }
+
+
+        .project-card:hover {
+
+            transform: translateY(-7px);
+
+            border-color: var(--border);
+        }
+
+
+        .project-card:hover::after {
+
+            transform: scale(1.5);
+        }
+
+
+        .project-number {
+
+            color: var(--champagne);
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+        }
+
+
+        .project-card h3 {
+
+            color: var(--ivory);
+
+            font-size: 23px;
+
+            margin:
+                20px 0 12px;
+        }
+
+
+        .project-card p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            flex-grow: 1;
+        }
+
+
+        .project-tech {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 25px;
+        }
+
+
+        .tech {
+
+            padding:
+                5px 10px;
+
+            border:
+                1px solid
+                rgba(201,169,110,0.20);
+
+            color: var(--champagne);
+
+            font-size: 11px;
+
+            border-radius: 2px;
+        }
+
+
+        /* =========================================================
+           JOURNEY
+        ========================================================== */
+
+        .journey {
+
+            background: var(--bg-soft);
+        }
+
+
+        .timeline {
+
+            max-width: 900px;
+
+            margin: auto;
+
+            position: relative;
+        }
+
+
+        .timeline::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 7px;
+
+            top: 0;
+
+            bottom: 0;
+
+            width: 1px;
+
+            background:
+                rgba(201,169,110,0.25);
+        }
+
+
+        .timeline-item {
+
+            position: relative;
+
+            padding:
+                0 0 45px 45px;
+        }
+
+
+        .timeline-item:last-child {
+
+            padding-bottom: 0;
+        }
+
+
+        .timeline-dot {
+
+            position: absolute;
+
+            left: 0;
+
+            top: 5px;
+
+            width: 15px;
+
+            height: 15px;
+
+            border-radius: 50%;
+
+            background: var(--bg-soft);
+
+            border:
+                1px solid var(--champagne);
+        }
+
+
+        .timeline-date {
+
+            color: var(--champagne);
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .timeline-item h3 {
+
+            color: var(--ivory);
+
+            font-size: 21px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .timeline-item p {
+
+            color: var(--muted);
+
+            max-width: 700px;
+        }
+
+
+        /* =========================================================
+           GOALS
+        ========================================================== */
+
+        .goals-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .goal-card {
+
+            padding: 35px 30px;
+
+            background: var(--surface);
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            transition: 0.35s ease;
+        }
+
+
+        .goal-card:hover {
+
+            transform: translateY(-5px);
+
+            border-color: var(--border);
+        }
+
+
+        .goal-number {
+
+            color: var(--champagne);
+
+            font-size: 13px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .goal-card h3 {
+
+            color: var(--ivory);
+
+            font-size: 22px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .goal-card p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================== */
+
+        .contact {
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .contact::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 500px;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(201,169,110,0.07),
+                    transparent 70%
+                );
+
+            pointer-events: none;
+        }
+
+
+        .contact-container {
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .contact h2 {
+
+            font-size:
+                clamp(40px, 6vw, 70px);
+
+            color: var(--ivory);
+
+            letter-spacing: -3px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .contact h2 span {
+
+            color: var(--champagne);
+        }
+
+
+        .contact-description {
+
+            max-width: 600px;
+
+            margin: auto;
+
+            color: var(--muted);
+        }
+
+
+        .social-links {
+
+            margin-top: 35px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .social-link {
+
+            padding:
+                10px 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            color: var(--text);
+
+            font-size: 13px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .social-link:hover {
+
+            color: var(--champagne);
+
+            border-color: var(--champagne);
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================== */
+
+        footer {
+
+            padding:
+                25px 6%;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            text-align: center;
+
+            color: #68645D;
+
+            font-size: 12px;
+        }
+
+
+        footer span {
+
+            color: var(--champagne);
+        }
+
+
+        /* =========================================================
+           REVEAL ANIMATION
+        ========================================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform: translateY(30px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+
+        .reveal.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE DESIGN
+        ========================================================== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+
+                position: absolute;
+
+                top: 72px;
+
+                left: 0;
+
+                width: 100%;
+
+                background:
+                    rgba(11,13,14,0.98);
+
+                border-bottom:
+                    1px solid var(--border);
+
+                display: none;
+
+                flex-direction: column;
+
+                padding: 25px;
+
+                gap: 20px;
+            }
+
+
+            .nav-links.active {
+
+                display: flex;
+            }
+
+
+            .menu-btn {
+
+                display: block;
+            }
+
+
+            .about-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+
+            .projects-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .goals-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .navbar {
+
+                padding:
+                    18px 5%;
+            }
+
+
+            .hero {
+
+                padding:
+                    130px 5%
+                    90px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 54px;
+
+                letter-spacing: -3px;
+            }
+
+
+            .hero-description {
+
+                font-size: 16px;
+            }
+
+
+            section {
+
+                padding:
+                    80px 5%;
+            }
+
+
+            .skills-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .projects-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .goals-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .learning-item {
+
+                grid-template-columns:
+                    55px 1fr;
+
+                gap: 15px;
+            }
+
+
+            .profile-card {
+
+                padding: 20px;
+            }
+
+
+            .scroll-indicator {
+
+                display: none;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+
+    <nav class="navbar" id="navbar">
+
+        <a href="#home" class="logo">
+            C<span>K</span>.
+        </a>
+
+
+        <ul class="nav-links" id="navLinks">
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#skills">Skills</a>
+            </li>
+
+            <li>
+                <a href="#learning">Learning</a>
+            </li>
+
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+
+            <li>
+                <a href="#journey">Journey</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open menu">
+
+            ☰
+
+        </button>
+
+    </nav>
+
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-container reveal">
+
+            <div class="hero-label">
+
+                CSE • DATA SCIENCE
+
+            </div>
+
+
+            <h1>
+
+                Building my
+                <span>journey</span>
+                one project at a time.
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                I'm Chaitanya Kumar, a B.Tech student exploring
+                web development, programming and AI. I'm still
+                learning, still experimenting and turning what
+                I learn into real projects.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#projects"
+                    class="btn btn-primary">
+
+                    Explore My Work
+
+                </a>
+
+
+                <a
+                    href="#about"
+                    class="btn btn-secondary">
+
+                    More About Me
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="scroll-indicator">
+
+            <span class="scroll-line"></span>
+
+            Scroll to explore
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         ABOUT
+    ========================================================== -->
+
+    <section class="about" id="about">
+
+        <div class="section-container">
+
+            <div class="section-heading reveal">
+
+                <div class="section-number">
+                    01 / ABOUT
+                </div>
+
+                <h2>
+                    Where I am right now.
+                </h2>
+
+                <p>
+                    This isn't a profile of someone who has
+                    already figured everything out. It's a
+                    profile of someone building that person.
+                </p>
+
+            </div>
+
+
+            <div class="about-grid">
+
+
+                <div class="about-text reveal">
+
+                    <p>
+
+                        I'm <strong>Chaitanya Kumar</strong>,
+                        currently pursuing B.Tech in
+                        Computer Science and Engineering
+                        with a specialization in Data Science.
+
+                    </p>
+
+
+                    <p>
+
+                        My current focus is building a strong
+                        foundation in <strong>web development</strong>,
+                        programming and problem solving.
+
+                        I've worked with HTML, CSS, Python and
+                        MySQL, and I'm currently spending more
+                        time learning JavaScript.
+
+                    </p>
+
+
+                    <p>
+
+                        I don't want this website to show
+                        technologies just for the sake of
+                        making a longer skills list.
+
+                        Everything here represents something
+                        I'm learning, practicing or building.
+
+                    </p>
+
+
+                    <p>
+
+                        As I continue learning, this profile
+                        will change with me.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="profile-card reveal">
+
+                    <div class="profile-row">
+
+                        <span class="label">
+                            Name
+                        </span>
+
+                        <span class="value">
+                            Chaitanya Kumar
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-row">
+
+                        <span class="label">
+                            Education
+                        </span>
+
+                        <span class="value">
+                            B.Tech CSE (DS)
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-row">
+
+                        <span class="label">
+                            College
+                        </span>
+
+                        <span class="value">
+                            Audisankara College
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-row">
+
+                        <span class="label">
+                            Current Focus
+                        </span>
+
+                        <span class="value">
+                            Frontend Development
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-row">
+
+                        <span class="label">
+                            Currently Learning
+                        </span>
+
+                        <span class="value">
+                            JavaScript
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-row">
+
+                        <span class="label">
+                            Next Direction
+                        </span>
+
+                        <span class="value">
+                            Full Stack + AI
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         SKILLS
+    ========================================================== -->
+
+    <section id="skills">
+
+        <div class="section-container">
+
+            <div class="section-heading reveal">
+
+                <div class="section-number">
+                    02 / SKILLS
+                </div>
+
+                <h2>
+                    What I'm working with.
+                </h2>
+
+                <p>
+                    My current technical foundation. The levels
+                    are intentionally approximate rather than
+                    pretending to be professional certifications.
+                </p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <span class="skill-name">
+                            HTML
+                        </span>
+
+                        <span class="skill-status">
+                            Comfortable
+                        </span>
+
+                    </div>
+
+
+                    <p class="skill-description">
+
+                        Building webpage structure and
+                        semantic layouts.
+
+                    </p>
+
+
+                    <div class="skill-bar">
+
+                        <div
+                            class="skill-progress"
+                            data-width="82%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <span class="skill-name">
+                            CSS
+                        </span>
+
+                        <span class="skill-status">
+                            Practicing
+                        </span>
+
+                    </div>
+
+
+                    <p class="skill-description">
+
+                        Styling, layouts, Flexbox,
+                        responsive design and visual interfaces.
+
+                    </p>
+
+
+                    <div class="skill-bar">
+
+                        <div
+                            class="skill-progress"
+                            data-width="75%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <span class="skill-name">
+                            Python
+                        </span>
+
+                        <span class="skill-status">
+                            Learning
+                        </span>
+
+                    </div>
+
+
+                    <p class="skill-description">
+
+                        Building my programming fundamentals
+                        and practicing Python concepts.
+
+                    </p>
+
+
+                    <div class="skill-bar">
+
+                        <div
+                            class="skill-progress"
+                            data-width="60%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <span class="skill-name">
+                            MySQL
+                        </span>
+
+                        <span class="skill-status">
+                            Learning
+                        </span>
+
+                    </div>
+
+
+                    <p class="skill-description">
+
+                        Working with databases, SQL queries,
+                        tables and data.
+
+                    </p>
+
+
+                    <div class="skill-bar">
+
+                        <div
+                            class="skill-progress"
+                            data-width="60%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <span class="skill-name">
+                            JavaScript
+                        </span>
+
+                        <span class="skill-status">
+                            Currently Learning
+                        </span>
+
+                    </div>
+
+
+                    <p class="skill-description">
+
+                        Learning functions, arrays, DOM,
+                        events and interactive webpages.
+
+                    </p>
+
+
+                    <div class="skill-bar">
+
+                        <div
+                            class="skill-progress"
+                            data-width="35%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-top">
+
+                        <span class="skill-name">
+                            Git & GitHub
+                        </span>
+
+                        <span class="skill-status">
+                            Learning
+                        </span>
+
+                    </div>
+
+
+                    <p class="skill-description">
+
+                        Learning how to manage projects,
+                        commits and repositories.
+
+                    </p>
+
+
+                    <div class="skill-bar">
+
+                        <div
+                            class="skill-progress"
+                            data-width="25%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         LEARNING PATH
+    ========================================================== -->
+
+    <section class="learning" id="learning">
+
+        <div class="section-container">
+
+            <div class="section-heading reveal">
+
+                <div class="section-number">
+                    03 / LEARNING
+                </div>
+
+                <h2>
+                    What comes next.
+                </h2>
+
+                <p>
+                    My current learning path is focused on
+                    building skills in a sequence rather than
+                    trying to learn everything at once.
+                </p>
+
+            </div>
+
+
+            <div class="learning-list">
+
+
+                <div class="learning-item reveal">
+
+                    <div class="learning-number">
+                        01
+                    </div>
+
+                    <div class="learning-content">
+
+                        <h3>
+                            JavaScript
+                        </h3>
+
+                        <p>
+                            Strengthening my JavaScript fundamentals
+                            including functions, arrays, DOM
+                            manipulation, events and interactive
+                            webpages.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="learning-item reveal">
+
+                    <div class="learning-number">
+                        02
+                    </div>
+
+                    <div class="learning-content">
+
+                        <h3>
+                            Responsive Web Development
+                        </h3>
+
+                        <p>
+                            Improving my ability to create websites
+                            that work properly across desktop,
+                            tablet and mobile screens.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="learning-item reveal">
+
+                    <div class="learning-number">
+                        03
+                    </div>
+
+                    <div class="learning-content">
+
+                        <h3>
+                            Git & GitHub
+                        </h3>
+
+                        <p>
+                            Learning proper version control and
+                            how to maintain and publish projects.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="learning-item reveal">
+
+                    <div class="learning-number">
+                        04
+                    </div>
+
+                    <div class="learning-content">
+
+                        <h3>
+                            React
+                        </h3>
+
+                        <p>
+                            After strengthening JavaScript,
+                            I plan to move into component-based
+                            frontend development with React.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="learning-item reveal">
+
+                    <div class="learning-number">
+                        05
+                    </div>
+
+                    <div class="learning-content">
+
+                        <h3>
+                            Full Stack Development
+                        </h3>
+
+                        <p>
+                            Moving toward backend development,
+                            APIs, databases and complete web
+                            applications.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="learning-item reveal">
+
+                    <div class="learning-number">
+                        06
+                    </div>
+
+                    <div class="learning-content">
+
+                        <h3>
+                            AI & Generative AI
+                        </h3>
+
+                        <p>
+                            Exploring how AI and Generative AI
+                            can be combined with software development
+                            to create useful applications.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PROJECTS
+    ========================================================== -->
+
+    <section id="projects">
+
+        <div class="section-container">
+
+            <div class="section-heading reveal">
+
+                <div class="section-number">
+                    04 / PROJECTS
+                </div>
+
+                <h2>
+                    Things I've built.
+                </h2>
+
+                <p>
+                    Small projects are where I'm turning concepts
+                    into something real.
+                </p>
+
+            </div>
+
+
+            <div class="projects-grid">
+
+
+                <!-- PROJECT 01 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        PROJECT 01
+                    </div>
+
+                    <h3>
+                        Personal Portfolio
+                    </h3>
+
+                    <p>
+
+                        This website itself is a project.
+                        I built it to practice HTML, CSS and
+                        JavaScript while creating a place to
+                        document my development journey.
+
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span class="tech">
+                            HTML
+                        </span>
+
+                        <span class="tech">
+                            CSS
+                        </span>
+
+                        <span class="tech">
+                            JavaScript
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PROJECT 02 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        PROJECT 02
+                    </div>
+
+                    <h3>
+                        Food Website
+                    </h3>
+
+                    <p>
+
+                        A frontend practice project created
+                        while learning webpage structure,
+                        styling and responsive layouts.
+
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span class="tech">
+                            HTML
+                        </span>
+
+                        <span class="tech">
+                            CSS
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PROJECT 03 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        PROJECT 03
+                    </div>
+
+                    <h3>
+                        MediExplain AI
+                    </h3>
+
+                    <p>
+
+                        A project concept focused on making
+                        medical reports and prescriptions easier
+                        to understand using AI and document
+                        processing.
+
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span class="tech">
+                            AI
+                        </span>
+
+                        <span class="tech">
+                            OCR
+                        </span>
+
+                        <span class="tech">
+                            Web
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PROJECT 04 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        PROJECT 04
+                    </div>
+
+                    <h3>
+                        Java Full Stack Practice
+                    </h3>
+
+                    <p>
+
+                        Coursework and practice focused on
+                        understanding how frontend and backend
+                        technologies work together in a
+                        full-stack environment.
+
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span class="tech">
+                            HTML
+                        </span>
+
+                        <span class="tech">
+                            CSS
+                        </span>
+
+                        <span class="tech">
+                            JavaScript
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PROJECT 05 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        PROJECT 05
+                    </div>
+
+                    <h3>
+                        Learning Projects
+                    </h3>
+
+                    <p>
+
+                        Small experiments and exercises created
+                        while learning JavaScript, DOM manipulation,
+                        events, arrays and functions.
+
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span class="tech">
+                            JavaScript
+                        </span>
+
+                        <span class="tech">
+                            DOM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PROJECT 06 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        PROJECT 06
+                    </div>
+
+                    <h3>
+                        More Coming
+                    </h3>
+
+                    <p>
+
+                        This section will grow as I continue
+                        learning and building more practical
+                        projects.
+
+                    </p>
+
+
+                    <div class="project-tech">
+
+                        <span class="tech">
+                            In Progress
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         JOURNEY
+    ========================================================== -->
+
+    <section class="journey" id="journey">
+
+        <div class="section-container">
+
+            <div class="section-heading reveal">
+
+                <div class="section-number">
+                    05 / JOURNEY
+                </div>
+
+                <h2>
+                    Still becoming.
+                </h2>
+
+                <p>
+                    A simple record of where I've been and
+                    where I'm heading.
+                </p>
+
+            </div>
+
+
+            <div class="timeline">
+
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-date">
+                        2023 — 2027
+                    </div>
+
+                    <h3>
+                        B.Tech — CSE (Data Science)
+                    </h3>
+
+                    <p>
+
+                        Pursuing my undergraduate degree at
+                        Audisankara College while building
+                        my technical foundation.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-date">
+                        FOUNDATION
+                    </div>
+
+                    <h3>
+                        HTML, CSS & Python
+                    </h3>
+
+                    <p>
+
+                        Started developing my basic programming
+                        and web development skills through
+                        coursework and practice.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-date">
+                        CURRENT
+                    </div>
+
+                    <h3>
+                        JavaScript & Frontend Development
+                    </h3>
+
+                    <p>
+
+                        Currently focusing on JavaScript and
+                        improving my ability to create
+                        interactive websites.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-date">
+                        NEXT
+                    </div>
+
+                    <h3>
+                        Full Stack Development
+                    </h3>
+
+                    <p>
+
+                        The next stage of my learning journey
+                        is to move into React, backend development,
+                        APIs and databases.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-date">
+                        FUTURE
+                    </div>
+
+                    <h3>
+                        AI-Powered Applications
+                    </h3>
+
+                    <p>
+
+                        Eventually combining software development
+                        with AI and Generative AI to build
+                        practical applications.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         GOALS
+    ========================================================== -->
+
+    <section>
+
+        <div class="section-container">
+
+            <div class="section-heading reveal">
+
+                <div class="section-number">
+                    06 / DIRECTION
+                </div>
+
+                <h2>
+                    What I'm building toward.
+                </h2>
+
+            </div>
+
+
+            <div class="goals-grid">
+
+
+                <div class="goal-card reveal">
+
+                    <div class="goal-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Development
+                    </h3>
+
+                    <p>
+
+                        Build a solid foundation in frontend,
+                        backend and full-stack development
+                        through practical projects.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="goal-card reveal">
+
+                    <div class="goal-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Problem Solving
+                    </h3>
+
+                    <p>
+
+                        Improve programming fundamentals and
+                        problem-solving ability through
+                        consistent practice.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="goal-card reveal">
+
+                    <div class="goal-number">
+                        03
+                    </div>
+
+                    <h3>
+                        AI
+                    </h3>
+
+                    <p>
+
+                        Learn how AI and Generative AI can be
+                        integrated into useful software
+                        applications.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================== -->
+
+    <section class="contact" id="contact">
+
+        <div class="section-container contact-container reveal">
+
+            <div class="section-number">
+                07 / CONNECT
+            </div>
+
+
+            <h2>
+                Let's keep
+                <span>building.</span>
+            </h2>
+
+
+            <p class="contact-description">
+
+                I'm currently learning, experimenting and
+                building projects. You can find my work and
+                follow my progress through the links below.
+
+            </p>
+
+
+            <div class="social-links">
+
+
+                <!-- Replace # with your actual GitHub URL -->
+
+                <a
+                    href="#"
+                    target="_blank"
+                    class="social-link">
+
+                    GitHub
+
+                </a>
+
+
+                <!-- Replace # with your actual LinkedIn URL -->
+
+                <a
+                    href="#"
+                    target="_blank"
+                    class="social-link">
+
+                    LinkedIn
+
+                </a>
+
+
+                <!-- Replace email address -->
+
+                <a
+                    href="mailto:your-email@example.com"
+                    class="social-link">
+
+                    Email
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        <p>
+
+            © <span id="year"></span>
+            Chaitanya Kumar.
+
+            Built with HTML, CSS & JavaScript.
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         STILL INSIDE THE SAME HTML FILE
+    ========================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           MOBILE MENU
+        ====================================================== */
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuBtn.addEventListener(
+            "click",
+            function () {
+
+                navLinks.classList.toggle("active");
+
+            }
+        );
+
+
+        /* Close mobile menu after clicking */
+
+        const navigationLinks =
+            document.querySelectorAll(
+                ".nav-links a"
+            );
+
+
+        navigationLinks.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        navLinks.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           NAVBAR ON SCROLL
+        ====================================================== */
+
+        const navbar =
+            document.getElementById("navbar");
+
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                if (window.scrollY > 50) {
+
+                    navbar.classList.add("scrolled");
+
+                } else {
+
+                    navbar.classList.remove("scrolled");
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           CURRENT YEAR
+        ====================================================== */
+
+        document.getElementById("year")
+            .textContent =
+            new Date().getFullYear();
+
+
+        /* =====================================================
+           SCROLL REVEAL
+        ====================================================== */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList
+                                    .add("visible");
+
+                                revealObserver.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        revealElements.forEach(
+            function (element) {
+
+                revealObserver.observe(element);
+
+            }
+        );
+
+
+        /* =====================================================
+           SKILL BAR ANIMATION
+        ====================================================== */
+
+        const skillBars =
+            document.querySelectorAll(
+                ".skill-progress"
+            );
+
+
+        const skillObserver =
+            new IntersectionObserver(
+
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                const width =
+                                    entry.target
+                                        .getAttribute(
+                                            "data-width"
+                                        );
+
+                                entry.target.style.width =
+                                    width;
+
+                                skillObserver.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold: 0.4
+                }
+
+            );
+
+
+        skillBars.forEach(
+            function (bar) {
+
+                skillObserver.observe(bar);
+
+            }
+        );
+
+
+        /* =====================================================
+           ACTIVE NAVIGATION
+        ====================================================== */
+
+        const sections =
+            document.querySelectorAll(
+                "section[id]"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                let currentSection = "";
+
+
+                sections.forEach(
+                    function (section) {
+
+                        const sectionTop =
+                            section.offsetTop - 150;
+
+                        const sectionHeight =
+                            section.offsetHeight;
+
+                        if (
+                            window.scrollY >=
+                            sectionTop
+                            &&
+                            window.scrollY <
+                            sectionTop +
+                            sectionHeight
+                        ) {
+
+                            currentSection =
+                                section.getAttribute(
+                                    "id"
+                                );
+
+                        }
+
+                    }
+                );
+
+
+                navigationLinks.forEach(
+                    function (link) {
+
+                        link.style.color =
+                            "var(--muted)";
+
+
+                        const href =
+                            link.getAttribute("href");
+
+
+                        if (
+                            href ===
+                            "#" + currentSection
+                        ) {
+
+                            link.style.color =
+                                "var(--champagne)";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+    </script>
+
+</body>
+
+</html>
+```
 
